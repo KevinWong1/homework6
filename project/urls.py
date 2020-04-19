@@ -16,7 +16,19 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from app import views
+
 urlpatterns = [
-    path('', views.test),
+    path('', views.index),
+    path('index', views.index),
+    path('about', views.about),
+    path('projects', views.projects),
+    path('weather', views.weather),
     path('admin/', admin.site.urls),
 ]
+
+
+# Boilerplate to include static files
+from django.conf import settings
+from django.conf.urls.static import static
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
